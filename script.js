@@ -90,10 +90,15 @@ fullTyped= fullTyped.slice(0,-1);
 
 //  calculations of words and character per minute
 const elapsedTime = 60 - Time;
-const wpmValue = Math.round((fullTyped.length / 5) / (elapsedTime / 60));
-wpm.innerText = `WPM: ${wpmValue}`;
-const cpmValue = Math.round(fullTyped.length / (elapsedTime / 60));
-cpm.innerText = `CPM: ${cpmValue}`;
+if (elapsedTime > 0) {
+  const wpmValue = Math.round((fullTyped.length / 5) / (elapsedTime / 60));
+  wpm.innerText = `WPM: ${wpmValue}`;
+  const cpmValue = Math.round(fullTyped.length / (elapsedTime / 60));
+  cpm.innerText = `CPM: ${cpmValue}`;
+} else {
+  wpm.innerText = `WPM: 0`;
+  cpm.innerText = `CPM: 0`;
+}
 
 
   //  if paragraph is completed then timer will stop
